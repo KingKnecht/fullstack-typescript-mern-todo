@@ -1,23 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import TodoItem from './components/TodoItem'
 import AddTodo from './components/AddTodo'
+import Login from './components/Login'
+import useToken from './hooks/useToken'
+
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { getTodos, addTodo, updateTodo, deleteTodo } from './API'
 import { Dashboard } from './components/Dashboard';
+import Admin from './components/Admin'
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<ITodo[]>([])
-
-  useEffect(() => {
-    fetchTodos()
-  }, [])
+  const [todos, setTodos] = useState<ITodo[]>([]) 
+  const { token } = useToken();
 
   const fetchTodos = (): void => {
     getTodos()
       .then(({ data: { todos } }: ITodo[] | any) => setTodos(todos))
       .catch((err: Error) => console.log(err))
   }
+
+  useEffect(() => {
+    fetchTodos()
+  }, [])
+
+  // if(!token) {
+  //   return <Login/>;
+  // }
 
   const handleSaveTodo = (e: React.FormEvent, formData: ITodo): void => {
     e.preventDefault()
@@ -54,12 +63,15 @@ const App: React.FC = () => {
   }
 
   return (
-    <main className='App'>
-      <h1>My Todos</h1>
+    <main className='App calculated-width'>
+      <h1>Mampf</h1>
       <BrowserRouter>
         <Switch>
           <Route path="/dashboard">
             <Dashboard />
+          </Route>
+          <Route path="/admin">
+            <Admin/>
           </Route>
           <Switch>
             <Route path="/">

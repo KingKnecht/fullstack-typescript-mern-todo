@@ -1,0 +1,10 @@
+.week-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.btn-prev{
+  /* margin-right: auto; */
+}

@@ -2,6 +2,18 @@ import axios, { AxiosResponse } from 'axios'
 
 const baseUrl: string = 'http://localhost:4000'
 
+export const getDays = async (from : Date, to: Date) : Promise<AxiosResponse<ApiOrganizerType>> => {
+  try {
+    const weeks: AxiosResponse<ApiOrganizerType> = await axios.get(
+      baseUrl + '/organizer/get-days',
+      {params: {from : from, to : to}}
+    )
+    return weeks
+  } catch (error) {
+    throw new Error(error as any)
+  }
+}
+
 export const getTodos = async (): Promise<AxiosResponse<ApiDataType>> => {
   try {
     const todos: AxiosResponse<ApiDataType> = await axios.get(
@@ -33,9 +45,7 @@ export const addTodo = async (
   }
 }
 
-export const updateTodo = async (
-  todo: ITodo
-): Promise<AxiosResponse<ApiDataType>> => {
+export const updateTodo = async (todo: ITodo): Promise<AxiosResponse<ApiDataType>> => {
   try {
     const todoUpdate: Pick<ITodo, 'status'> = {
       status: true,
@@ -50,9 +60,7 @@ export const updateTodo = async (
   }
 }
 
-export const deleteTodo = async (
-  _id: string
-): Promise<AxiosResponse<ApiDataType>> => {
+export const deleteTodo = async (_id: string): Promise<AxiosResponse<ApiDataType>> => {
   try {
     const deletedTodo: AxiosResponse<ApiDataType> = await axios.delete(
       `${baseUrl}/delete-todo/${_id}`

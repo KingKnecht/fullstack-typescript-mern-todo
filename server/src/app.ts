@@ -16,7 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(todoRoutes)
 
 //const uri: string = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@clustertodo.raz9g.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`
-const uri: string = `mongodb://mampf:mampf@localhost/Todos?retryWrites=true&w=majority`
+const uri: string = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@localhost/Todos?retryWrites=true&w=majority`
+
 const options = {}
   
 mongoose

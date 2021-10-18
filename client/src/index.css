@@ -12,11 +12,18 @@ body {
     color: #fff;
     background: #333;
 }
+.calculated-width {
+    width: -webkit-calc(100% - 100px);
+    width:    -moz-calc(100% - 100px);
+    width:         calc(100% - 100px);
+}​
 
 .App {
-    max-width: 728px;
+    /* max-width: 728px; */
     margin: 4rem auto;
 }
+
+
 
 .App > h1 {
     text-align: center;

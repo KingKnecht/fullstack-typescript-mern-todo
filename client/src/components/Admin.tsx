@@ -1,5 +1,5 @@
 import styles from './Admin.module.css'
-import WeekOverview from "./WeekOverview";
+import WeekOverview from "./AdminWeek/WeekOverview";
 
 export const Admin = () => {
 

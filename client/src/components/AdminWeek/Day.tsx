@@ -1,7 +1,7 @@
 import format from 'date-fns/format';
 import de from 'date-fns/locale/de';
 import React from 'react';
-import Card from './UI/Card';
+import Card from '../UI/Card';
 
 type Props = {
   date: Date

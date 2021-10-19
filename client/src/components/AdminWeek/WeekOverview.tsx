@@ -7,7 +7,7 @@ import addDays from 'date-fns/addDays';
 import Day from './Day'
 import { useState } from "react";
 import WeekNavbar from "./WeekNavbar";
-import styles from "./WeekOverview.module.css"
+//import styles from "./WeekOverview.module.css"
 import Week from "./Week";
 
 interface IProps { };

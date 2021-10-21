@@ -6,7 +6,7 @@ import useToken from './hooks/useToken'
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { getTodos, addTodo, updateTodo, deleteTodo } from './API'
+import { getTodos, addTodo, updateTodo, deleteTodo, addPlannedDish } from './API'
 import { Dashboard } from './components/Dashboard';
 import Admin from './components/Admin'
 
@@ -28,7 +28,9 @@ const App: React.FC = () => {
   //   return <Login/>;
   // }
 
-  const handleSaveTodo = (e: React.FormEvent, formData: ITodo): void => {
+ 
+  const handleSaveTodo = (e: React.FormEvent, formData: ITodo)
+  : void => {
     e.preventDefault()
     addTodo(formData)
       .then(({ status, data }) => {

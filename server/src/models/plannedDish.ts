@@ -3,10 +3,13 @@ import { model, Schema } from 'mongoose'
 import Dish from './../models/dish'
 
 export const dishSchema: Schema = new Schema({
+  name : {
+    type : String,
+    required: true
+  },
   plannedOn: {
     type: String,
     required: true,
-    child : Dish
   }
 }, { timestamps: true });
 

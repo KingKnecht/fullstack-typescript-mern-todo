@@ -9,15 +9,19 @@ import { useState } from "react";
 import WeekNavbar from "./WeekNavbar";
 //import styles from "./WeekOverview.module.css"
 import Week from "./Week";
+import { format } from "path/posix";
+import { addPlannedDish } from "../../API";
 
 interface IProps { };
 
 const WeekOverview: FC<IProps> = () => {
 
   const [now, setNow] = useState(new Date());
-
+ 
   const start = startOfWeek(now, { weekStartsOn: 1 });
   const end = endOfWeek(now, { weekStartsOn: 1 });
+  
+ 
 
   const arr = eachDayOfInterval({
     start: start,
@@ -38,7 +42,7 @@ const WeekOverview: FC<IProps> = () => {
       <h1>Overview: Week</h1>
       <WeekNavbar onWeekChanged={onWeekChanged} weekNumber={weekNumber} />
       {/* <div className="week_overview">{arr.map(e => (<Day date={e} />))}</div> */}
-      <Week>{arr.map(e => (<Day date={e} />))}</Week>
+      <Week>{arr.map(e => (<Day date={e} key={e.toString()}/>))}</Week>
     </div>);
 };
 

@@ -2,17 +2,61 @@ import axios, { AxiosResponse } from 'axios'
 
 const baseUrl: string = 'http://localhost:4000'
 
-export const getDays = async (from : Date, to: Date) : Promise<AxiosResponse<ApiOrganizerType>> => {
+export const getDays = async (from: Date, to: Date): Promise<AxiosResponse<ApiOrganizerType>> => {
   try {
     const weeks: AxiosResponse<ApiOrganizerType> = await axios.get(
       baseUrl + '/organizer/get-days',
-      {params: {from : from, to : to}}
+      { params: { from: from, to: to } }
     )
     return weeks
   } catch (error) {
     throw new Error(error as any)
   }
 }
+
+export const getPlannedDishes = async (date: string): Promise<AxiosResponse<ApiDataType>> => {
+  try {
+    const plannedDishes: AxiosResponse<ApiDataType> = await axios.get(
+      baseUrl + '/get-planned-dishes',
+      //dd-mm-yyyy
+      { params: { date: date } }
+    )
+    return plannedDishes
+  } catch (error) {
+    throw new Error(error as any)
+  }
+}
+
+export const getDishes = async (): Promise<AxiosResponse<ApiDataType>> => {
+  try {
+    const dishes: AxiosResponse<ApiDataType> = await axios.get(
+      baseUrl + '/get-dishes',
+    )
+    return dishes
+  } catch (error) {
+    throw new Error(error as any)
+  }
+}
+
+export const addPlannedDish = async (
+formData: IDish
+): Promise<AxiosResponse<ApiDataType>> => {
+  try {
+    const dish: Omit<IDish, '_id'> = {
+      name: formData.name,
+      plannedOn : formData.plannedOn
+    }
+    const savePlannedDish: AxiosResponse<ApiDataType> = await axios.post(
+      baseUrl + '/add-planned-dish',
+      dish
+    )
+
+    return savePlannedDish
+  } catch (error) {
+    throw new Error(error as any)
+  }
+}
+
 
 export const getTodos = async (): Promise<AxiosResponse<ApiDataType>> => {
   try {

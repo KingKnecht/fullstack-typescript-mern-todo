@@ -8,6 +8,7 @@ router.get('/todos', todos_1.getTodos);
 router.post('/add-todo', todos_1.addTodo);
 router.put('/edit-todo/:id', todos_1.updateTodo);
 router.delete('/delete-todo/:id', todos_1.deleteTodo);
-router.get('/organizer/get-dishes', organizer_1.getDishes);
+router.get('/get-planned-dishes', organizer_1.getPlannedDishes);
+router.post('/add-planned-dish', organizer_1.addPlannedDish);
 exports.default = router;
 //# sourceMappingURL=index.js.map

@@ -8,17 +8,18 @@ interface ITodo {
 }
 
 interface IDish {
-    id: string,
+    _id: string,
     name: string
+    plannedOn : string
 }
 
 interface IDay {
-    id: string,
+    _id: string,
     dishes : IDish[]
 }
 
 interface IWeek {
-    id: string
+    _id: string
     from : Date,
     to : Date,
 }
@@ -36,7 +37,9 @@ type ApiDataType = {
     message: string
     status: string
     todos: ITodo[]
-    todo?: ITodo
+    todo?: ITodo,
+    plannedDishes : IDish[],
+    dish? : IDish
   }
 
 

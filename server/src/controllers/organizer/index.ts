@@ -3,13 +3,10 @@ import { IPlannedDish } from '../../types/plannedDish'
 import PlannedDish from '../../models/plannedDish'
 
 
-type getPlannedDishesQueryParams = {
-    date:string
-}
 const getPlannedDishes = async (req: Request, res: Response): Promise<void> => {
     try {
-        const x  = req.query.date as string;
-        const plannedDishes: IPlannedDish[] = await PlannedDish.find({ plannedOn: x })
+        const plannedOn  = req.query.date as string;
+        const plannedDishes: IPlannedDish[] = await PlannedDish.find({ plannedOn: plannedOn })
         res.status(200).json({ dishes: plannedDishes })
     } catch (error) {
         throw error

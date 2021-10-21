@@ -16,8 +16,8 @@ exports.addPlannedDish = exports.getPlannedDishes = void 0;
 const plannedDish_1 = __importDefault(require("../../models/plannedDish"));
 const getPlannedDishes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const x = req.query.date;
-        const plannedDishes = yield plannedDish_1.default.find({ plannedOn: x });
+        const plannedOn = req.query.date;
+        const plannedDishes = yield plannedDish_1.default.find({ plannedOn: plannedOn });
         res.status(200).json({ dishes: plannedDishes });
     }
     catch (error) {
